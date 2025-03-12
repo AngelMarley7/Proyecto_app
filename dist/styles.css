@@ -1,4 +1,8 @@
+/*!*****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/public/css/styles.css ***!
+  \*****************************************************************************/
 body {
-  background-color: blue;
+  background-color: bisque;
+  border: 1px solid blue;
 }
 

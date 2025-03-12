@@ -35,5 +35,13 @@ module.exports = {
             filename: "styles.css"
         })
     ],
-    mode: "development"
+    mode: "development",
+
+    // 🔥 Servidor de desarrollo con recarga automática 🔥
+    devServer: {
+        static: "./dist", // Carpeta desde donde se sirven los archivos
+        hot: true, // Habilita Hot Module Replacement (HMR)
+        open: true, // Abre el navegador automáticamente
+        port: 3000 // Usa el puerto 3000
+    }
 };
