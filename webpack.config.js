@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const mode = process.env.NODE_ENV || "development"; // Definir el modo correctamente
 
@@ -42,6 +42,12 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: "styles.css" // ✅ Asegura que `styles.css` se genere en `dist/`
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: "src/views/index.js", to: "index.js" }, // ✅ Copia index.js a dist/
+                { from: "src/views/login.js", to: "login.js" } // copia login.js a dist
+            ]
         })
     ],
     mode,
@@ -56,7 +62,7 @@ module.exports = {
         liveReload: true, // 🔥 Forzar recarga si HMR no lo detecta
         open: true, // Abre el navegador automáticamente
         port: 3000, // Usa el puerto 3000
-        watchFiles: ["src/public/css/**/*.css", "src/views/**/*.html"], // ✅ Observar cambios en CSS y HTML
+        watchFiles: ["src/public/css/**/*.css", "src/views/**/*.html", "src/views/**/*.js"], // ✅ Observar cambios en CSS, HTML y JS
         devMiddleware: {
             writeToDisk: true // ✅ Forzar escritura en disco en desarrollo
         }
